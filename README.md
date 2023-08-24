@@ -1,1 +1,1 @@
-# clang-repl-cc
+# Code Completion in ClangRepl
