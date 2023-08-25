@@ -1,4 +1,4 @@
-baseURL = 'https://www.syntaxtransformers.com/clang-repl-cc/'
+baseURL = 'https://www.syntaxforge.net/clang-repl-cc/'
 languageCode = 'en-us'
-title = 'Code Completion in ClangRepl'
+title = 'Syntax Forge'
 theme = 'PaperMod'

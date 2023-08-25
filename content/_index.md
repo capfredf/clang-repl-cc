@@ -12,11 +12,9 @@ draft: false
 
 [**GSoC Project Proposal**](https://summerofcode.withgoogle.com/proposals/details/fvAuNKTx)
 
+**Github** : [capfredf](https://github.com/capfredf)
+
 ---
-
-**Contact me!**
-
-Github : [capfredf](https://github.com/capfredf)
 
 ## Overview of the Project
 
