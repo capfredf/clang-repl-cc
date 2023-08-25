@@ -1,4 +1,4 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://www.syntaxtransformers.com/clang-repl-cc/'
 languageCode = 'en-us'
 title = 'Code Completion in ClangRepl'
 # theme = 'PaperMod'
