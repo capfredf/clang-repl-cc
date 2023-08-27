@@ -14,6 +14,8 @@ draft: false
 
 **Github** : [capfredf](https://github.com/capfredf)
 
+**I will deliever a talk on this topic at LLVM Developers' meeting 2023**.
+
 ---
 
 ## Overview of the Project
@@ -42,9 +44,9 @@ current namespace would create too much noise.
 1. In the submitted patch, we made every effort to integrate the component with
 the existing infrastructure while not reinventing the wheel. Starting from
 home-brewed code completion modules, it took multiple iterations for us to work out
-the current solution where ~ASTUnit::codeComplete~ is employed to do the heavy-lifting job.
+the current solution where `ASTUnit::codeComplete` is employed to do the heavy-lifting job.
 
-2. New completion contexts were added so the `Sema` can provide correct
+2. New completion contexts were added so the `Sema/CodeComplete*` can provide correct
 completion results for the new declaration kind that Clang-Repl uses model
 statements on the global scope. In a regular C++ file, expression statements are
 not allowed to appear at the top level. Therefore, `Sema` will exclude invalid
@@ -63,7 +65,6 @@ at a REPL.
 The type-directed feature is still a work in progress. It was developed based on
 an early version of the patch submitted. Basically it takes type information
 into consideration. Here is a screecast:
-
 
 
 ## Acknowledgments
