@@ -35,29 +35,25 @@ current namespace would create too much noise.
 
 ## My Approach
 
-The auto-completion for Clang-Repl piggybacks on Clang’s Sema and parsing
-infrastructures with a relatively small amount of new extensions.  First, new
-completion contexts were added so the `Sema` can provide correct completion
-results for the new declaration kind that Clang-Repl uses model statements on
-the global scope. In a regular C++ file, expression statements are not allowed
-to appear at the top level. Therefore, `Sema` will exclude invalid completion
-candidates for expression statements. However, they are common input at a
-REPL. We redefined code completion contexts to address the issue.
-
-## Contributions
-
 **Pull Request** : [D154382](https://reviews.llvm.org/D154382)
 
-In the submitted patch, we made every effort to integrate the component with the
-existing infrastructure while not reinventing the wheel. Here are some highlights:
+### Highlights
 
-1. Due to the nature of compiler instance, a new compiler instance is created
-for each time of code completion.  Such a compiler instance carries over AST
-context source from the main interpreter compiler in order to obtain
-declarations or bindings from previous input in the same REPL session.
+1. In the submitted patch, we made every effort to integrate the component with
+the existing infrastructure while not reinventing the wheel. Starting from
+home-brewed code completion modules, it took multiple iterations for us to work out
+the current solution where ~ASTUnit::codeComplete~ is employed to do the heavy-lifting job.
 
-2. It took multiple iterations to actually 
+2. New completion contexts were added so the `Sema` can provide correct
+completion results for the new declaration kind that Clang-Repl uses model
+statements on the global scope. In a regular C++ file, expression statements are
+not allowed to appear at the top level. Therefore, `Sema` will exclude invalid
+completion candidates for expression statements. However, they are common input
+at a REPL.
 
+## Demo
+
+## Under Development
 
 ## Acknowledgments
 
