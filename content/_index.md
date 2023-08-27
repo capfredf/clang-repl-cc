@@ -41,17 +41,20 @@ current namespace would create too much noise.
 
 ### Highlights
 
-1. In the submitted patch, we made every effort to integrate the component with
-the existing infrastructure while not reinventing the wheel. Starting from
-home-brewed code completion modules, it took multiple iterations for us to work out
-the current solution where `ASTUnit::codeComplete` is employed to do the heavy-lifting job.
+1. In the submitted patch, we have multiple iterations to integrate the new
+components with the existing infrastructure while not reinventing the wheel. For
+each code completion, we create a special AST unit called `ASTUnit` with the
+current input and invoke its method `ASTUnit::codeComplete` with a completion
+point to do the heavy-lifting job.
 
-2. New completion contexts were added so the `Sema/CodeComplete*` can provide correct
-completion results for the new declaration kind that Clang-Repl uses model
-statements on the global scope. In a regular C++ file, expression statements are
-not allowed to appear at the top level. Therefore, `Sema` will exclude invalid
-completion candidates for expression statements. However, they are common input
-at a REPL.
+2. `Sema/CodeComplete*` are a collection of modules in Clang that play an
+central role in code completion. We added new completion contexts  so the
+`Sema/CodeComplete*` can provide correct completion results for the new
+declaration kind that Clang-Repl uses model statements on the global scope. In a
+regular C++ file, expression statements are not allowed to appear at the top
+level. Therefore, `Sema/CodeComplete*` will exclude invalid completion
+candidates for expression statements, which are nonetheless common inputs at the
+REPL.
 
 ## Demo
 
