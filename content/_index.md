@@ -12,6 +12,8 @@ draft: false
 
 [**GSoC Project Proposal**](https://summerofcode.withgoogle.com/proposals/details/fvAuNKTx)
 
+[**Slides of the First Talk @ CaaS Meeting**](https://compiler-research.org/assets/presentations/CaaS_Weekly_14_06_2023_Fred_Code_Completion_in_ClangREPL.pdf)
+
 **Github** : [capfredf](https://github.com/capfredf)
 
 **I will give a talk on this topic at LLVM Developers' meeting 2023**.
