@@ -53,10 +53,22 @@ at a REPL.
 
 ## Demo
 
+![Demo1](cc1.gif)
+
+![Demo2](cc2.gif)
+
+
 ## Under Development
 
-## Acknowledgments
+The type-directed feature is still a work in progress. It was developed based on
+an early version of the patch submitted. Basically it takes type information
+into consideration. Here is a screecast:
 
-This project cannot be completed without Vassil's continuous help and guidance. 
+
+
+## Acknowledgments
+I would like to thank my mentor Vassil for his valuable discussions and feedback
+on the patch. Without him, I would not be able to complete the project in a
+timely manner.
 
 
