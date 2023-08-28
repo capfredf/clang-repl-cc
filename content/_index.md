@@ -72,6 +72,8 @@ based on an early version of the patch submitted. With this feature, code
 completion results are further narrowed down to well-typed candidates with
 respect to completion points. Here is a screecast:
 
+![Demo3](tcc.gif)
+
 
 ## Acknowledgments
 I would like to thank my mentor Vassil for his valuable discussions and feedback
