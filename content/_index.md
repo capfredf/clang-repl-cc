@@ -65,11 +65,12 @@ REPL.
 ![Demo2](cc2.gif)
 
 
-## Under Development
+## Future Work
 
-The type-directed feature is still a work in progress. It was developed based on
-an early version of the patch submitted. Basically it takes type information
-into consideration. Here is a screecast:
+The type-directed code completion is still a work in progress. It was developed
+based on an early version of the patch submitted. With this feature, code
+completion results are further narrowed down to well-typed candidates with
+respect to completion points. Here is a screecast:
 
 
 ## Acknowledgments
