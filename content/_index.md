@@ -26,18 +26,48 @@ Clang-Repl, featuring a REPL(Read-Eval-Print-Loop) environment, allows
 developers to program in C++ interactively. It is a C++ interpreter built upon
 the Clang and LLVM incremental compilation pipeline. One of the missing upstream
 features in Clang-Repl is the ability to propose options for automatically
-completing user input or auto-completion. Sometimes, C++ can be quite wordy,
+completing user input or code completion. Sometimes, C++ can be quite wordy,
 requiring users to type every character of an expression or
-statement. Consequently, this causes typos or syntactic errors.  An
-auto-completion system will either complete the input if there is only one
-completion result or display them in a list if there are multiple completion
+statement. Consequently, this causes typos or syntactic errors. For example,
+
+```
+clang-repl> class HelloMyFirstClassThatHasAReallyLongName{}
+clang-repl> new H<cursor>
+```
+
+Currenctly, users need to type all the rest of thirty-eight letters. However,
+armed with a code completion system, users will be able to either complete the
+input if there is only one completion result or see a list of valid completion
 candidates. Furthermore, the code completion should be context-aware, and it
 should provide semantically relevant results with respect to the current
-position and the input on the current line. Showing all the identifiers in the
-current namespace would create too much noise.
+position and the input on the current line, as opposed to showing all the
+symbols in the current namespace. The problem is demonstrated by the example below
+
+```
+clang-repl> struct Vehicle{};
+clang-repl> struct Car : Vehicle{};
+clang-repl> struct Sedan : Car{};
+clang-repl> void moveCar(Car &c){};
+clang-repl> Vehicle v;
+clang-repl> Car c1, c2;
+clang-repl> Sedan s;
+clang-repl> c.move(<tab>
+```
+
+If users hit the `<tab`> key at the indicated position, listing all symbols
+would be distracting. It is easy to find out that among all declarations, only
+`c1`, `c2` and `s` are well-typed candidates. So an ideal code completion system
+should be able to filter out results using type information. 
+
+The project leverages existing components of Clang/LLVM and aims to provides
+context-aware semantic completion suggestions.
 
 
 ## My Approach
+
+The project mainly consists of two patches. The first patch involves building
+syntactic code completion based on Clang/LLVM infrastruture. The second patch
+goes one step further by implementing type directed code completion.
 
 **Pull Request** : [D154382](https://reviews.llvm.org/D154382)
 
