@@ -16,7 +16,7 @@ draft: false
 
 **Github** : [capfredf](https://github.com/capfredf)
 
-**I will give a talk on this topic at LLVM Developers' meeting 2023**.
+I will give a [**talk**](https://discourse.llvm.org/t/2023-us-llvm-dev-mtg-progam/73029) on this topic at LLVM Developers' meeting 2023.
 
 ---
 
