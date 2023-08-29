@@ -67,6 +67,8 @@ REPL.
 
 ## Future Work
 
+**Pull Request** : [D159128](https://reviews.llvm.org/D159128)
+
 The type-directed code completion is still a work in progress. It was developed
 based on an early version of the patch submitted. With this feature, code
 completion results are further narrowed down to well-typed candidates with
