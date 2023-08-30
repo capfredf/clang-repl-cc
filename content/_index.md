@@ -14,6 +14,8 @@ draft: false
 
 [**Slides of the First Talk @ CaaS Meeting**](https://compiler-research.org/assets/presentations/CaaS_Weekly_14_06_2023_Fred_Code_Completion_in_ClangREPL.pdf)
 
+[**Slides of the Second Talk @ CaaS Meeting**](https://compiler-research.org/assets/presentations/CaaS_Weekly_30_08_2023_Fred-Code_Completion_in_ClangRepl_GSoC.pdf)
+
 **Github** : [capfredf](https://github.com/capfredf)
 
 I will give a [**talk**](https://discourse.llvm.org/t/2023-us-llvm-dev-mtg-progam/73029) on this topic at LLVM Developers' meeting 2023.
@@ -80,13 +82,23 @@ current input and invoke its method `ASTUnit::codeComplete` with a completion
 point to do the heavy-lifting job.
 
 2. `Sema/CodeComplete*` are a collection of modules in Clang that play an
-central role in code completion. We added new completion contexts  so the
+central role in code completion. We added new completion contexts so the
 `Sema/CodeComplete*` can provide correct completion results for the new
-declaration kind that Clang-Repl uses model statements on the global scope. In a
-regular C++ file, expression statements are not allowed to appear at the top
-level. Therefore, `Sema/CodeComplete*` will exclude invalid completion
-candidates for expression statements, which are nonetheless common inputs at the
-REPL.
+declaration kind that Clang-Repl uses model statements on the global scope. The
+underlying reason is that in a regular C++ file, expression statements are not
+allowed to appear at the top level. Therefore, `Sema/CodeComplete*` would
+exclude invalid completion candidates for expression statements, which are
+nonetheless common inputs at the REPL.
+
+3. `Sema/CodeComplete*` assume the input is an intact source file or AST context
+by default.  Because a new compiler instance is created whenever code completion
+is triggered, `Sema/CodeComplete*` would not be able to see all declarations
+defined by previous inputs in the same REPL session. The solution is to
+construct an `ExternalASTSource` with `ASTContext`s from both the code
+completion and main compiler instances, and use that `ExternalASTSource` as the
+external source of the code completion's `ASTContext`. Code completion invokes
+`ExternalASTSource::completeVisibleDeclsMap`, where we import decls from the
+main `ASTContext` to the code completion `ASTContext`.
 
 ## Demo
 
