@@ -119,9 +119,17 @@ respect to completion points. Here is a screecast:
 ![Demo3](tcc.gif)
 
 
-## Acknowledgments
-I would like to thank my mentor Vassil for his valuable discussions and feedback
-on the patch. Without him, I would not be able to complete the project in a
-timely manner.
+## Conclusion & Acknowledgments
+
+The journey has been incredibly thrilling. I have honed my C++ skills and delved
+into Clang/LLVM with a focus on interactions of components responsible for
+parsing. Thanks to everything I learned from the project, I feel confident in
+becoming a better Clang/LLVM contributor and compiler hacker.
+
+Last but not the least, I would like to express gratitude to my mentor Vassil
+for his many valuable discussions and feedback regarding the patch. His guidance
+ensured the project procceeded smoothly. Without him, I would have not been able
+to complete the project in a timely manner.
+
 
 
